@@ -19,6 +19,8 @@ Science A.
    and `lib`), and load them by name: `"ship.png"` reads `assets/ship.png`.
 4. Import, write your game, and hit Run:
 
+## Your first program
+
 ```java
 import gooeygame.*;
 
