@@ -1,0 +1,8 @@
+-quiet
+--release 8
+-d _site/docs
+-windowtitle GooeyGame
+-doctitle GooeyGame
+-bottom "Copyright &copy; 2026 GooeyJava. Released under the <a href='https://github.com/gooey-java/GooeyGame/blob/main/LICENSE'>MIT License</a>."
+-sourcepath src
+gooeygame

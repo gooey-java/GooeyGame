@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GooeyGame · Gooey Java</title>
+<meta name="description" content="GooeyGame: make real 2D games in Java with init(), update() and draw().">
+<link rel="icon" href="https://gooey-java.github.io/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<!-- Shared Gooey Java styles: edit them in the gooey-java.github.io repo -->
+<link rel="stylesheet" href="https://gooey-java.github.io/gooey.css">
+</head>
+<body>
+
+<svg class="goo" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 0 H1200 V38
+    C1170 38 1165 52 1160 70 C1156 86 1140 86 1137 70 C1133 52 1120 40 1090 40
+    C1040 40 1030 44 1022 62 C1015 100 990 104 985 72 C980 46 960 40 920 40
+    C860 40 850 42 845 56 C840 72 826 72 822 56 C818 42 800 38 760 38
+    C700 38 690 44 684 66 C678 112 650 114 646 74 C642 46 620 40 580 40
+    C520 40 512 44 506 58 C500 76 484 76 480 58 C476 44 460 40 420 40
+    C360 40 350 46 344 70 C337 98 314 98 310 70 C306 46 290 40 250 40
+    C190 40 182 44 176 60 C170 80 152 80 148 60 C144 44 128 38 90 38
+    C40 38 34 42 28 60 C22 84 6 82 3 60 C1 46 0 40 0 38 Z"/>
+</svg>
+
+<div class="wrap">
+  <nav aria-label="Main">
+    <a class="brand" href="https://gooey-java.github.io/">
+      <img src="https://gooey-java.github.io/logo.svg" alt="" width="42" height="42">
+      Gooey Java
+    </a>
+    <ul>
+      <li><a href="docs/">Docs</a></li>
+      <li><a href="https://github.com/gooey-java/GooeyGame">GitHub</a></li>
+      <li><a href="https://gooey-java.github.io/#menu">All libraries</a></li>
+    </ul>
+  </nav>
+
+  <header class="show-hero">
+    <div>
+      <p class="size">Double shot</p>
+      <h1>GooeyGame</h1>
+      <p class="pitch">Make real 2D games with init(), update() and draw().</p>
+      <p>Every game is one class with three methods. GooeyGame runs the game loop, reads the keyboard and mouse, and plays your sounds.</p>
+        <div class="buttons">
+          <a class="btn btn-main" href="docs/">Read the docs</a>
+          <a class="btn btn-ghost" href="#setup">Get started</a>
+        </div>
+        <p class="fine">Download <a href="GooeyGame.jar" download>GooeyGame.jar</a> and <a href="GooeyGame-sources.jar" download>GooeyGame-sources.jar</a>. Runs on Java 8 or newer.</p>
+    </div>
+    <figure class="exhibit">
+      <div class="game-window">
+        <div class="titlebar"><span>Hello</span><span aria-hidden="true">800 × 600</span></div>
+        <canvas id="hello" width="800" height="600" role="img" aria-label="A black game window with a yellow ball gliding across it"></canvas>
+      </div>
+      <figcaption>The game below, running: a ball moving 200 pixels per second.</figcaption>
+    </figure>
+  </header>
+</div>
+
+<main>
+  <section class="features wrap" aria-labelledby="featTitle">
+    <h2 class="section-title" id="featTitle">What’s in the cup</h2>
+    <ul class="feature-list">
+        <li>
+          <h3>A real game loop</h3>
+          <p><code>init()</code> runs once, <code>update(dt)</code> about 60 times a second, and <code>draw(d)</code> paints each frame.</p>
+        </li>
+        <li>
+          <h3>Keys, mouse, sprites and sound</h3>
+          <p>Ask <code>Input.isKeyDown(Key.LEFT)</code>, animate with sprite sheets, and play sound effects and music from your <code>assets</code> folder.</p>
+        </li>
+        <li>
+          <h3>Friendly when things break</h3>
+          <p>A missing image draws a pink box and warns once. A missing sound warns once and stays quiet. Your game keeps running.</p>
+        </li>
+    </ul>
+  </section>
+
+  <section class="start first-sip" aria-labelledby="sipTitle">
+    <div class="wrap">
+      <h2 class="section-title" id="sipTitle">Your first sip</h2>
+      <p class="section-sub">The smallest possible game: a ball that glides to the right.</p>
+      <div class="code-block">
+<pre>import gooeygame.*;
+
+public class Hello implements GameListener {
+    private double x = 0;
+
+    public void init() { }
+
+    public void update(double dt) {
+        x += 200 * dt;    <span class="c">// 200 pixels per second</span>
+    }
+
+    public void draw(Draw d) {
+        d.clear("black");
+        d.fillCircle(x, 300, 20, "yellow");
+    }
+
+    public static void main(String[] args) {
+        GameRunner.start(new Hello(), "Hello", 800, 600);
+    }
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="setup wrap" id="setup" aria-labelledby="setupTitle">
+    <h2 class="section-title" id="setupTitle">Get started in three sips</h2>
+    <ol class="steps">
+      <li>
+        <h3>Grab the jars</h3>
+        <p>Download <a href="GooeyGame.jar" download>GooeyGame.jar</a> and <a href="GooeyGame-sources.jar" download>GooeyGame-sources.jar</a>.</p>
+      </li>
+      <li>
+        <h3>Drop them in <code>lib</code></h3>
+        <p>Put both jars in your project’s <code>lib</code> folder. VS Code shows the docs when you hover over GooeyGame code.</p>
+      </li>
+      <li>
+        <h3>Import and run</h3>
+        <p>Add <code>import gooeygame.*;</code> at the top of your file, write your code and hit Run.</p>
+      </li>
+    </ol>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>GooeyGame is free and open source under the <a href="https://github.com/gooey-java/GooeyGame/blob/main/LICENSE">MIT License</a>. Read the code <a href="https://github.com/gooey-java/GooeyGame">on GitHub</a>.</p>
+  <p>Part of <a href="https://gooey-java.github.io/">Gooey Java</a>, brewed by a CS teacher for AP Computer Science A students.</p>
+</footer>
+<script>
+  // A tiny JavaScript copy of the Hello game above, so visitors can see it run.
+  (function () {
+    var canvas = document.getElementById("hello");
+    var g = canvas.getContext("2d");
+    var x = 0, last = null;
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function draw() {
+      g.fillStyle = "black";
+      g.fillRect(0, 0, canvas.width, canvas.height);
+      g.fillStyle = "yellow";
+      g.beginPath();
+      g.arc(x, 300, 20, 0, Math.PI * 2);
+      g.fill();
+    }
+    function frame(time) {
+      var dt = last === null ? 0 : Math.min((time - last) / 1000, 0.05);
+      last = time;
+      x += 200 * dt;
+      if (x > canvas.width + 20) x = -20;   // wrap around so the demo keeps going
+      draw();
+      requestAnimationFrame(frame);
+    }
+    if (still) { x = 400; draw(); } else { requestAnimationFrame(frame); }
+  })();
+</script>
+
+</body>
+</html>
