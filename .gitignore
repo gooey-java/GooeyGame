@@ -1,0 +1,7 @@
+# Compiled class files (VS Code rebuilds these automatically)
+bin/
+*.class
+
+# Operating system files
+.DS_Store
+Thumbs.db
